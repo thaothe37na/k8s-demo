@@ -9,7 +9,7 @@ variable "argocd_admin_password" {
 
 variable "gitops_repo_url" {
   description = "URL của gitops repo"
-  default     = "https://github.com/your-org/gitops"
+  default     = "https://github.com/thaothe37na/k8s-demo"
 }
 
 variable "docker_registry" {

@@ -13,6 +13,8 @@ spec:
       parameters:
       - name: controller.service.type
         value: LoadBalancer
+      - name: controller.service.externalTrafficPolicy
+        value: Local
   destination:
     server: https://kubernetes.default.svc
     namespace: ingress-nginx
@@ -56,12 +58,31 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/your-org/gitops
+    repoURL: https://github.com/thaothe37na/k8s-demo
     targetRevision: main
-    path: system/cert-manager-issuer
+    path: gitops/system/cert-manager-issuer
   destination:
     server: https://kubernetes.default.svc
     namespace: cert-manager
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: metallb-config
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/thaothe37na/k8s-demo
+    targetRevision: main
+    path: gitops/system/metallb-config
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: metallb-system
   syncPolicy:
     automated:
       prune: true

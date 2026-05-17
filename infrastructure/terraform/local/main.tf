@@ -4,12 +4,25 @@ resource "kind_cluster" "main" {
   wait_for_ready  = true
 
   kind_config {
-    api_version = "kind.x-k8s.io/v1alpha4"
     kind        = "Cluster"
-    nodes = [
-      { role = "control-plane" },
-      { role = "worker" },
-      { role = "worker" }
-    ]
+    api_version = "kind.x-k8s.io/v1alpha4"
+
+    node {
+      role = "control-plane"
+
+      extra_port_mappings {
+        container_port = 30081
+        host_port      = 8080
+        protocol       = "TCP"
+      }
+    }
+
+    node {
+      role = "worker"
+    }
+
+    node {
+      role = "worker"
+    }
   }
 }

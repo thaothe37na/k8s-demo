@@ -20,9 +20,9 @@ spec:
     spec:
       project: default
       source:
-        repoURL: https://github.com/your-org/gitops
+        repoURL: https://github.com/thaothe37na/k8s-demo
         targetRevision: main
-        path: "overlays/local/{{service}}"
+        path: "gitops/overlays/local/{{service}}"
       destination:
         server: https://kubernetes.default.svc
         namespace: microservices
