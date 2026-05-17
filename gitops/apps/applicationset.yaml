@@ -1,0 +1,42 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: microservices
+  namespace: argocd
+spec:
+  generators:
+    - list:
+        elements:
+          - service: krakend
+          - service: user-service
+          - service: order-service
+          - service: payment-service
+          - service: notification-service
+  template:
+    metadata:
+      name: "{{service}}"
+      annotations:
+        notifications.argoproj.io/subscribe.on-sync-failed.slack: dev-alerts
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/your-org/gitops
+        targetRevision: main
+        path: "overlays/local/{{service}}"
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: microservices
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+          allowEmpty: false
+        syncOptions:
+          - CreateNamespace=true
+          - ServerSideApply=true
+        retry:
+          limit: 3
+          backoff:
+            duration: 5s
+            factor: 2
+            maxDuration: 3m
