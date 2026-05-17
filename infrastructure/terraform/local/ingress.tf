@@ -7,6 +7,11 @@ resource "helm_release" "ingress_nginx" {
   wait             = true
   timeout          = 300
 
+  set {
+    name  = "controller.service.type"
+    value = "LoadBalancer"
+  }
+
   depends_on = [kind_cluster.main, helm_release.metallb]
 }
 
@@ -19,7 +24,10 @@ resource "helm_release" "cert_manager" {
   wait             = true
   timeout          = 300
 
-  set { name = "installCRDs"; value = "true" }
+  set {
+    name  = "installCRDs"
+    value = "true"
+  }
 
   depends_on = [kind_cluster.main]
 }

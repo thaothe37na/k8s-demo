@@ -30,3 +30,10 @@ spec:
                 name: argocd-server
                 port:
                   number: 80
+          - path: /()(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: frontend
+                port:
+                  number: 80

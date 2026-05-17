@@ -7,12 +7,12 @@
   "output_encoding": "json",
   "endpoints": [
     {
-      "endpoint": "/api/users",
+      "endpoint": "/api/users/{path}",
       "method": "GET",
       "output_encoding": "json",
       "backend": [
         {
-          "url_pattern": "/users",
+          "url_pattern": "/{path}",
           "encoding": "json",
           "sd": "static",
           "method": "GET",
@@ -24,12 +24,12 @@
       ]
     },
     {
-      "endpoint": "/api/orders",
+      "endpoint": "/api/orders/{path}",
       "method": "GET",
       "output_encoding": "json",
       "backend": [
         {
-          "url_pattern": "/orders",
+          "url_pattern": "/{path}",
           "encoding": "json",
           "sd": "static",
           "method": "GET",
@@ -41,12 +41,12 @@
       ]
     },
     {
-      "endpoint": "/api/payments",
+      "endpoint": "/api/payments/{path}",
       "method": "GET",
       "output_encoding": "json",
       "backend": [
         {
-          "url_pattern": "/payments",
+          "url_pattern": "/{path}",
           "encoding": "json",
           "sd": "static",
           "method": "GET",
@@ -58,12 +58,12 @@
       ]
     },
     {
-      "endpoint": "/api/notifications",
+      "endpoint": "/api/notifications/{path}",
       "method": "GET",
       "output_encoding": "json",
       "backend": [
         {
-          "url_pattern": "/notifications",
+          "url_pattern": "/{path}",
           "encoding": "json",
           "sd": "static",
           "method": "GET",
