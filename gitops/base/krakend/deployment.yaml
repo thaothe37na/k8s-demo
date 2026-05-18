@@ -14,9 +14,13 @@ spec:
       labels:
         app: krakend
     spec:
+      enableServiceLinks: false
       containers:
         - name: krakend
           image: devopsfaith/krakend:2.6.0
+          env:
+            - name: KRAKEND_PORT
+              value: "8080"
           ports:
             - containerPort: 8080
           volumeMounts:
