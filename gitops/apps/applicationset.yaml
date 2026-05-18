@@ -23,7 +23,7 @@ spec:
       source:
         repoURL: https://github.com/thaothe37na/k8s-demo
         targetRevision: main
-        path: "gitops/overlays/local/{{service}}"
+        path: "gitops/overlays/production/{{service}}"
       destination:
         server: https://kubernetes.default.svc
         namespace: microservices

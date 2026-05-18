@@ -24,7 +24,7 @@ jobs:
           - frontend
 
     permissions:
-      contents: read
+      contents: write
       packages: write
 
     steps:
@@ -73,3 +73,18 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
+
+      - name: Update GitOps manifest
+        if: steps.filter.outputs.changed == 'true'
+        run: |
+          SHORT_SHA=$(echo "${{ github.sha }}" | cut -c1-7)
+          echo "Updating ${{ matrix.service }} to tag ${SHORT_SHA}"
+          sed -i "s/newTag: \".*\"/newTag: \"${SHORT_SHA}\"/" gitops/overlays/production/${{ matrix.service }}/kustomization.yaml
+
+      - name: Commit and push
+        if: steps.filter.outputs.changed == 'true'
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "deploy: update ${{ matrix.service }} image to ${{ github.sha }}"
+          commit_user_name: github-actions[bot]
+          commit_user_email: github-actions[bot]@users.noreply.github.com
