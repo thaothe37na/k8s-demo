@@ -4,5 +4,5 @@ namespace: microservices
 resources:
   - ../../../base/user-service
 images:
-  - name: ghcr.io/your-org/user-service
+  - name: ghcr.io/thaothe37na/user-service
     newTag: "latest"

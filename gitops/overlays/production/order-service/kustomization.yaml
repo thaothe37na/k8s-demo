@@ -4,5 +4,5 @@ namespace: microservices
 resources:
   - ../../../base/order-service
 images:
-  - name: ghcr.io/your-org/order-service
+  - name: ghcr.io/thaothe37na/order-service
     newTag: "latest"
