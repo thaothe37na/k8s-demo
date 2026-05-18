@@ -19,11 +19,9 @@ spec:
         prometheus.io/port: "8080"
         prometheus.io/path: "/actuator/prometheus"
     spec:
-      imagePullSecrets:
-        - name: ghcr-secret
       containers:
         - name: payment-service
-          image: ghcr.io/your-org/payment-service:latest
+          image: ghcr.io/thaothe37na/payment-service:latest
           ports:
             - containerPort: 8080
           envFrom:

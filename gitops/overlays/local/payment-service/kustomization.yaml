@@ -4,7 +4,7 @@ namespace: microservices
 resources:
   - ../../../base/payment-service
 images:
-  - name: ghcr.io/your-org/payment-service
+  - name: ghcr.io/thaothe37na/payment-service
     newName: payment-service
     newTag: "latest"
 patches:

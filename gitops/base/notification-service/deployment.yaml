@@ -19,11 +19,9 @@ spec:
         prometheus.io/port: "8080"
         prometheus.io/path: "/actuator/prometheus"
     spec:
-      imagePullSecrets:
-        - name: ghcr-secret
       containers:
         - name: notification-service
-          image: ghcr.io/your-org/notification-service:latest
+          image: ghcr.io/thaothe37na/notification-service:latest
           ports:
             - containerPort: 8080
           envFrom:

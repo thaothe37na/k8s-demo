@@ -4,6 +4,6 @@ namespace: microservices
 resources:
   - ../../../base/frontend
 images:
-  - name: ghcr.io/your-org/frontend
+  - name: ghcr.io/thaothe37na/frontend
     newName: frontend
     newTag: "latest"

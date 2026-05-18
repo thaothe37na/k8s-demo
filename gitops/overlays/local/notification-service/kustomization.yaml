@@ -4,7 +4,7 @@ namespace: microservices
 resources:
   - ../../../base/notification-service
 images:
-  - name: ghcr.io/your-org/notification-service
+  - name: ghcr.io/thaothe37na/notification-service
     newName: notification-service
     newTag: "latest"
 patches:
