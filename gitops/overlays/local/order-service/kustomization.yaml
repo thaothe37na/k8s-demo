@@ -5,4 +5,12 @@ resources:
   - ../../../base/order-service
 images:
   - name: ghcr.io/your-org/order-service
+    newName: order-service
     newTag: "latest"
+patches:
+  - target:
+      kind: Deployment
+    patch: |-
+      - op: add
+        path: /spec/template/spec/containers/0/imagePullPolicy
+        value: IfNotPresent

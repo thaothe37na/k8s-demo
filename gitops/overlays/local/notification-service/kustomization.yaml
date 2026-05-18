@@ -5,4 +5,12 @@ resources:
   - ../../../base/notification-service
 images:
   - name: ghcr.io/your-org/notification-service
+    newName: notification-service
     newTag: "latest"
+patches:
+  - target:
+      kind: Deployment
+    patch: |-
+      - op: add
+        path: /spec/template/spec/containers/0/imagePullPolicy
+        value: IfNotPresent

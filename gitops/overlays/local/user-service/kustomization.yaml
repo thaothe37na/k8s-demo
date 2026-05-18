@@ -5,4 +5,12 @@ resources:
   - ../../../base/user-service
 images:
   - name: ghcr.io/your-org/user-service
+    newName: user-service
     newTag: "latest"
+patches:
+  - target:
+      kind: Deployment
+    patch: |-
+      - op: add
+        path: /spec/template/spec/containers/0/imagePullPolicy
+        value: IfNotPresent

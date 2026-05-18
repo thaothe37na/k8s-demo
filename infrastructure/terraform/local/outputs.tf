@@ -5,3 +5,7 @@ output "kubeconfig_command" {
 output "argocd_url"  { value = "http://localhost:8080" }
 output "grafana_url" { value = "http://localhost:30082 (admin/admin)" }
 output "app_url"     { value = "http://localhost/api/..." }
+output "argocd_password" {
+  value     = random_password.argocd.result
+  sensitive = true
+}
