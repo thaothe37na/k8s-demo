@@ -52,7 +52,9 @@
       "Bash(kubectl patch *)",
       "Bash(curl -s http://localhost:9092/health)",
       "Bash(python3 -m json.tool)",
-      "Bash(curl -s http://localhost:9092/ping)"
+      "Bash(curl -s http://localhost:9092/ping)",
+      "Bash(argocd app *)",
+      "Bash(docker manifest *)"
     ]
   },
   "hooks": {
