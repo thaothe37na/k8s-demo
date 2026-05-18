@@ -12,6 +12,7 @@ spec:
           - service: order-service
           - service: payment-service
           - service: notification-service
+          - service: frontend
   template:
     metadata:
       name: "{{service}}"
