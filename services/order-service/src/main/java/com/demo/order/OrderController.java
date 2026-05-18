@@ -33,7 +33,7 @@ public class OrderController {
     public Map<String, Object> health() {
         Map<String, Object> response = new HashMap<>();
         response.put("service", "order-service");
-        response.put("status", "UP");
+        response.put("status", "UPP");
         response.put("timestamp", Instant.now().toString());
         Runtime runtime = Runtime.getRuntime();
         response.put("memory_free_mb", runtime.freeMemory() / (1024 * 1024));
