@@ -5,4 +5,4 @@ resources:
   - ../../../base/notification-service
 images:
   - name: ghcr.io/thaothe37na/notification-service
-    newTag: "latest"
+    newTag: "df50626"
